@@ -1,5 +1,13 @@
 # card
 
+Это стартовый проект в цветах ДВ:
+router
+vuetify
+scss
+pug
+vuex
+drawer
+
 ## Project setup
 ```
 npm install
