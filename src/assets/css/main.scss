@@ -1,0 +1,19 @@
+@import '@/assets/css/colors';
+
+.rel {
+	position: relative;
+}
+
+.zag {
+	font-size: 1.8rem;
+	color: #666;
+}
+
+.my  {
+	.v-label {
+		font-size: .85rem;
+	}
+	.v-input__control {
+		height: 20px;
+	}
+}

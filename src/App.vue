@@ -1,38 +1,29 @@
 <template lang="pug">
-<v-app>
-	<v-app-bar app color="primary" dark>
-		<div class="d-flex align-center">
-			<v-img alt="Vuetify Logo" class="shrink mr-2" contain src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png" transition="scale-transition" width="40" />
-			
-			<v-img alt="Vuetify Name" class="shrink mt-1 hidden-sm-and-down" contain min-width="100" src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png" width="100" />
-		</div>
-		
-		<v-spacer></v-spacer>
-		
-		<v-btn href="https://github.com/vuetifyjs/vuetify/releases/latest" target="_blank" text >
-			<span class="mr-2">Latest Release</span>
-			<v-icon>mdi-open-in-new</v-icon>
-		</v-btn>
-	</v-app-bar>
-	.test
-		.more laksjdlkasj
-	<v-main>
+v-app 
+	Drawer(:maincolor="maincolor")
+	v-app-bar(app color="#ccc" flat collapse-on-scroll clipped-left elevation="2" ).pr-2
+		v-app-bar-nav-icon(color="#fff" )
+		.logo(v-show="!$vuetify.breakpoint.mobile")
+			span Docsvision
+		v-spacer
+		v-btn( href="" icon ).mr-3
+			v-icon(color="#fff") mdi-magnify
+		v-avatar(color="blue lighten-4" size="35"  v-ripple )
+			img(src="@/assets/img/user0.svg")
+	v-main
+		v-container.cont
+			router-view
 
-		<HelloWorld/>
-	</v-main>
-</v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+import Drawer from './components/Drawer'
 
 export default {
 	name: 'App',
-	
-	components: {
-		HelloWorld,
-	},
-	
+	components: { 
+		Drawer,
+	}, 
 	data: () => ({
 		//
 	}),
@@ -40,17 +31,23 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '@/assets/css/colors.scss';
 
-.test {
-	width: 800px;
-	height: 100px;
-	background: red;
-	margin-top: 80px;
-	.more {
-		height: 50px;
-		width: 400px;
-		color: darken(yellow, 10%);
-	}
+.v-main {
+	background: #efefef;
+}
+.cont {
+	padding: 0 1rem;
+	transition: .2s all ease;
 }
 
+.logo {
+	color: #fff;
+	font-size: 1.4rem;
+	width: 250px;
+}
+.icon-user, .icon-search, .icon-search-scan {
+	font-size: 1.2rem;
+	margin-left: -4px;
+}
 </style>
