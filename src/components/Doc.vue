@@ -1,10 +1,10 @@
 <template lang="pug">
 .doc
-	div.zg  zag
-	div.but  but
-	div.main main
-	div.dop  dop
-	div.menu menu
+	div.zg  заголовок
+	div.but  кнопки действий
+	div.main превью (основная область)
+	div.dop  доп.область
+	div.menu аккордеон (меню)
 
 </template>
 
@@ -23,10 +23,11 @@ export default {
 @import '@/assets/css/colors.scss';
 
 .doc {
+	margin-bottom: 5rem;
 	display: grid;
 	gap: .5rem;
 	grid-template-columns: repeat(6, 1fr);
-	grid-template-rows: min-content;
+	grid-template-rows: repeat (min-content, auto);
 	> div {
 		background: #ccc;
 		height: 50px;
@@ -36,7 +37,6 @@ export default {
 	}
 	.zg {
 		grid-column: span 4;
-		height: 150px;
 		@media (max-width: 1200px) {
 			grid-column: span 6;
 		}
@@ -45,15 +45,21 @@ export default {
 		grid-column: span 2;
 		@media (max-width: 1200px) {
 			grid-column: span 6;
+			grid-row: 2/3;
 		}
 	}
 	.main {
-		height: 500px;
+		height: 100%;
+		/* height: 500px; */
 		grid-column: span 4;
-		grid-row: span 3;
+		grid-row: 2/4;
+		@media (max-width: 1200px) {
+			grid-row: 3/4;
+		}
 		@media (max-width: 860px) {
 			grid-column: span 6;
-			grid-row: span 2;
+			grid-row: 4/5;
+			height: 300px;
 		}
 	}
 	.dop {
@@ -62,16 +68,21 @@ export default {
 		@media (max-width: 1200px) {
 			grid-column: span 6;
 		}
+		@media (max-width: 860px) {
+			grid-column: span 6;
+		}
 	}
 	.menu {
 		grid-column: span 2;
 		height: 200px;
 		@media (max-width: 1200px) {
 			grid-column: 5/7;
-			grid-row: 3/6;
+			grid-row: 3/4;
 		}
 		@media (max-width: 860px) {
 			grid-column: span 6;
+			grid-row: 3/4;
+			height: 100px;
 		}
 	}
 	
