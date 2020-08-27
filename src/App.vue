@@ -1,8 +1,8 @@
 <template lang="pug">
 v-app 
 	Drawer(:maincolor="maincolor")
-	v-app-bar(app color="#ccc" flat collapse-on-scroll clipped-left elevation="2" ).pr-2
-		v-app-bar-nav-icon(color="#fff" )
+	v-app-bar(app :color="maincolor" flat collapse-on-scroll clipped-left elevation="2" ).pr-2
+		v-app-bar-nav-icon(color="#fff" @click="$store.commit('toggleDrawer')")
 		.logo(v-show="!$vuetify.breakpoint.mobile")
 			span Docsvision
 		v-spacer
@@ -27,7 +27,27 @@ export default {
 	data: () => ({
 		//
 	}),
-};
+	computed: {
+		drawer() { return this.$store.getters.drawer },
+		mini() { return this.$store.getters.mini },
+		maincolor() {
+			let name = this.$route.name
+			switch (name) {
+			// case 'results':
+			// 	return 'purple'
+			case 'doc':
+				return 'docolor'
+			case 'task':
+				return 'taskcolor'
+			case 'folder':
+				return 'dark'
+			case 'Home':
+				return 'dark'
+			default: return 'dark'
+			}
+		}
+	},
+}
 </script>
 
 <style scoped lang="scss">

@@ -35,7 +35,6 @@ export default {
 			if (this.$route.path === e) {
 				return
 			} else this.$router.push(e)
-			this.$store.commit('setSearchMode', false)
 		},
 		toggleMini() {
 			if (this.mini === true) {
