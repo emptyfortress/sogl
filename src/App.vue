@@ -11,6 +11,7 @@ v-app
 		v-avatar(color="blue lighten-4" size="35"  v-ripple )
 			img(src="@/assets/img/user0.svg")
 	v-main
+		.subbar(:class="maincolor")
 		v-container.cont
 			router-view
 
@@ -33,8 +34,6 @@ export default {
 		maincolor() {
 			let name = this.$route.name
 			switch (name) {
-			// case 'results':
-			// 	return 'purple'
 			case 'doc':
 				return 'docolor'
 			case 'task':
@@ -59,6 +58,7 @@ export default {
 .cont {
 	padding: 0 1rem;
 	transition: .2s all ease;
+	margin-top: 2rem;
 }
 
 .logo {
@@ -69,5 +69,8 @@ export default {
 .icon-user, .icon-search, .icon-search-scan {
 	font-size: 1.2rem;
 	margin-left: -4px;
+}
+.subbar {
+	height: 42px;
 }
 </style>

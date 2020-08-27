@@ -1,6 +1,6 @@
 <template lang="pug">
-.ma-5
-	h2 Doc
+.doc
+	.zag Doc
 </template>
 
 <script>
@@ -13,3 +13,12 @@ export default {
 }
 
 </script>
+
+<style scoped lang="scss">
+@import '@/assets/css/colors.scss';
+
+.doc {
+	background: #ccc;
+	
+}
+</style>
