@@ -24,7 +24,7 @@ export default {
 			},
 			menu: [
 				{ id: 0, url: '/', icon: 'mdi-home-roof', text: 'Главная' },
-				{ id: 1, url: '/doc', icon: 'mdi-folder-outline', text: 'Документы' },
+				{ id: 1, url: '/doc', icon: 'mdi-file-image-outline', text: 'Служебка' },
 				{ id: 2, url: '/task', icon: 'mdi-folder-outline', text: 'Задания' },
 				{ id: 3, url: '/folder', icon: 'mdi-folder-outline', text: 'Папка' },
 			],

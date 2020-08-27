@@ -5,8 +5,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
 	state: {
-		drawer: true,
-		mini: false,
+		drawer: false,
+		mini: true,
 	},
 	getters: {
 		drawer: state => { return state.drawer },

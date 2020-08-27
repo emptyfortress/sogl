@@ -1,7 +1,7 @@
 <template lang="pug">
 v-app 
 	Drawer(:maincolor="maincolor")
-	v-app-bar(app :color="maincolor" flat collapse-on-scroll clipped-left elevation="2" ).pr-2
+	v-app-bar(app :color="maincolor" flat clipped-left elevation="2" ).pr-2
 		v-app-bar-nav-icon(color="#fff" @click="$store.commit('toggleDrawer')")
 		.logo(v-show="!$vuetify.breakpoint.mobile")
 			span Docsvision
