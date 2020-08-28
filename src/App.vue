@@ -4,7 +4,7 @@ v-app
 	v-app-bar(app :color="maincolor" flat clipped-left elevation="2" ).pr-2
 		v-app-bar-nav-icon(color="#fff" @click="$store.commit('toggleDrawer')")
 		.logo(v-show="!$vuetify.breakpoint.mobile")
-			span Docsvision
+			span Docsvision {{maincolor}}
 		v-spacer
 		v-btn( href="" icon ).mr-3
 			v-icon(color="#fff") mdi-magnify
@@ -19,32 +19,20 @@ v-app
 
 <script>
 import Drawer from './components/Drawer'
+import {maincolor} from '@/components/mixins/maincolor'
 
 export default {
 	name: 'App',
-	components: { 
+	mixins: [maincolor],
+	components: {
 		Drawer,
-	}, 
+	},
 	data: () => ({
 		//
 	}),
 	computed: {
 		drawer() { return this.$store.getters.drawer },
 		mini() { return this.$store.getters.mini },
-		maincolor() {
-			let name = this.$route.name
-			switch (name) {
-			case 'doc':
-				return 'docolor'
-			case 'task':
-				return 'taskcolor'
-			case 'folder':
-				return 'dark'
-			case 'Home':
-				return 'dark'
-			default: return 'dark'
-			}
-		}
 	},
 }
 </script>
