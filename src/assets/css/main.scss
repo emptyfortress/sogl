@@ -17,3 +17,7 @@
 		height: 20px;
 	}
 }
+
+.vis-network:focus, canvas:focus {
+	outline: none;
+}

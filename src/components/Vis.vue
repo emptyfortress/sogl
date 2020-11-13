@@ -1,57 +1,91 @@
 <template lang="pug">
 .all
-	.zag Согласование
-	network(ref="network" :nodes="nodes" :edges="edges" :options="options").wrapper
+	.zag() Согласование
+	drag-zone(:options="{ direction: 'vertical' }").zone
+		drag-content.c1
+			network(ref="network"
+				:nodes="nodes"
+				:edges="edges"
+				:options="options"
+				:events="['selectNode']"
+				@select-node="onNodeSelected"
+			).wrapper
+		drag-handle.handle
+		drag-content.c2
+			p
+				v-icon(color="dark").mr-3 mdi-information
+				span Выберите этап для просмотра информации по нему.
 </template>
 
 <script>
 import { Network } from "vue-vis-network";
+import { dragZone, dragHandle, dragContent } from 'vue-drag-zone'
+import { list, branches } from '@/list.js'
+import { options } from '@/options.js'
+
 
 export default {
 	data() {
 		return {
-			nodes: [
-				{id: 1,  label: 'circle',  shape: 'circle' },
-				{id: 2,  label: 'ellipse', shape: 'ellipse'},
-				{id: 3,  label: 'database',shape: 'database'},
-				{id: 4,  label: 'box',     shape: 'box'    },
-				{id: 5,  label: 'diamond', shape: 'diamond'},
-				{id: 6,  label: 'dot',     shape: 'dot'},
-				{id: 7,  label: 'square',  shape: 'square'},
-				{id: 8,  label: 'triangle',shape: 'triangle'},
-			],
-			edges: [
-				{from: 1, to: 2},
-				{from: 2, to: 3},
-				{from: 2, to: 4},
-				{from: 2, to: 5}, 
-				{from: 5, to: 6},
-				{from: 5, to: 7},
-				{from: 6, to: 8}
-			],
-			options: {
-				nodes: {
-					// borderWidth: 4
-				},
-				edges: {
-					// color: 'lightgray'
-				}
-			}
+			nodes: list,
+			edges: branches,
+			options: options,
 		}
 	},
 	components: {
 		Network,
+		dragZone,
+		dragHandle,
+		dragContent
+	},
+	methods: {
+		onNodeSelected: function (e) {
+			console.log(e.nodes)
+		},
 	},
 }
 
 </script>
 
 <style scoped lang="scss">
-/* @import '@/assets/css/colors.scss'; */
-.wrapper{
-	height: 400px;
+@import '@/assets/css/colors.scss';
+
+.zone{
 	width: 100%;
-	height: calc(100vh - 300px);
-	background: #ccc;
+	height: calc(100vh - 230px);
+	background: rgb(95,195,255);
+	background: linear-gradient(0deg, rgba(95,195,255,1) 0%, rgba(255,255,255,1) 50%, rgba(105,199,255,1) 100%);
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
+	overflow: hidden;
+}
+.wrapper {
+	height: 100%;
+}
+.zone .c1 {
+	height: calc(100% - 80px);
+}
+.zone .c2 {
+	background: #fff;
+	height: 80px;
+	box-shadow: 0 -1px 6px rgba(0,0,0,.2);
+	padding: 1rem;
+}
+.handle {
+	position: relative;
+	width: 100%;
+	height: 10px;
+	cursor: ns-resize;
+	background: transparent url('../assets/img/drag.png') no-repeat 50% 50%;
+	&:hover:after {
+		content: '';
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		border-top: 2px dotted $dark;
+	}
 }
 </style>

@@ -13,6 +13,7 @@
     "vis-network": "^8.5.3",
     "vis-util": "^4.3.4",
     "vue": "^2.6.11",
+    "vue-drag-zone": "^2.0.0-rc1",
     "vue-router": "^3.2.0",
     "vue-vis-network": "^1.0.2",
     "vuetify": "^2.2.11",
