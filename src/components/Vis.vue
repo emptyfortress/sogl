@@ -1,9 +1,10 @@
 <template lang="pug">
 .all
-	.zag() Согласование
+	.zag Ход согласования
 	#zone
 		.mynet
 			network(ref="network"
+				id="network"
 				:nodes="nodes"
 				:edges="edges"
 				:options="options"
@@ -16,6 +17,15 @@
 			p(id="paneInfo")
 				v-icon(color="dark").mr-3 mdi-information
 				span Выберите этап для просмотра информации по нему.
+			v-slide-x-transition(mode="out-in")
+				Table(v-show="selectedNode" :selected="selectedNode")
+			v-slide-x-transition(mode="out-in")
+				.but(v-show="selectedNode")
+					v-btn(icon @click="select(selectedNode - 1)")
+						v-icon mdi-chevron-left-circle-outline
+					v-btn(icon @click="select(selectedNode + 1)")
+						v-icon mdi-chevron-right-circle-outline
+
 </template>
 
 <script>
@@ -23,6 +33,8 @@ import { Network } from "vue-vis-network";
 import { list, branches } from '@/list.js'
 import { options } from '@/options.js'
 import {resize} from '@/components/mixins/resize'
+import Table from '@/components/Table'
+
 
 export default {
 	mixins: [resize],
@@ -32,16 +44,17 @@ export default {
 			edges: branches,
 			options: options,
 			firstSel: true,
+			selectedNode: null,
 		}
 	},
 	components: {
 		Network,
+		Table,
 	},
 	methods: {
 		onNodeSelected: function (e) {
-			let selectedNode = e.nodes;
+			let selectedNode = e.nodes[0];
 			let network = this.$refs.network
-			console.log(selectedNode);
 			document.querySelector('#paneInfo').classList.add('hide');
 			var pane = document.querySelector('#pane')
 			if (this.firstSel) {
@@ -51,12 +64,22 @@ export default {
 				}, 350);
 				pane.style.height = '200px'
 				this.firstSel = false
-			} 
-			network.focus(selectedNode, {offset: {x: 0, y: -100}, animation: true});
+			}
+			network.focus(selectedNode, {scale: 1.3, offset: {x: 0, y: -100}, animation: true})
+			this.selectedNode = selectedNode
+			console.log(this.selectedNode)
 		},
 		onDeselect: function (e) {
-			console.log(e.nodes)
+			console.log('deselect' + e.nodes)
 		},
+		select (e) {
+			let sel = [] 
+			let network = this.$refs.network
+			sel.push(e)
+			network.selectNodes(sel)
+			network.focus(sel, {scale: 1.3, offset: {x: 0, y: -100}, animation: true})
+			this.selectedNode = e
+		}
 	},
 }
 
@@ -83,6 +106,7 @@ export default {
 	position: absolute;
 	width: 100%;
 	height: 50px;
+	max-height: 100%;
 	bottom: 0;
 	left: 0;
 	background: #fff;
@@ -110,5 +134,10 @@ export default {
 }
 .hide {
 	display: none;
+}
+.but {
+	position: absolute;
+	top: .5rem;
+	right: .5rem;
 }
 </style>

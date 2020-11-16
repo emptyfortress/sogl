@@ -1,10 +1,10 @@
 const options = {
-	autoResize: true,
-	interaction: {
-		hover: false,
-	},
+	// autoResize: true,
+	// interaction: {
+	// 	hover: false,
+	// },
 	layout: {
-		improvedLayout: false,
+		improvedLayout: true,
 		hierarchical: {
 			enabled: true,
 			direction: 'LR',
@@ -17,8 +17,9 @@ const options = {
 		fixed: true,
 		chosen: {
 			node: function(values) {
-				(values.shadowSize = 15);
+				(values.shadowSize = 20);
 				(values.borderWidth = 4);
+				(values.borderColor = '#fff');
 			},
 		},
 	},

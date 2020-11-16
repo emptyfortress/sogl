@@ -6,27 +6,30 @@ export const resize = {
 		}
 	},
 	mounted () {
-		window.addEventListener('mousemove', e => {
-			if (this.isResizing) {
-				this.drag(e)
-			}
-		})
-		window.addEventListener('mouseup', () => {
-			this.isResizing = false
-		})
+		window.addEventListener('mousemove', this.drag)
+		window.addEventListener('mouseup', this.mouseup)
 	},
 	beforeDestroy () {
-		window.removeEventListener('mousemove')
+		window.removeEventListener('mousemove', this.drag)
+		window.removeEventListener('mouseup', this.upmouse)
 	},
 	methods: {
 		setResize (e) {
 			this.isResizing = true
 			this.lastDownY = e.clientY
 		},
+		removeResize () {
+			this.isResizing = false
+		},
 		drag (e) {
-			let pane = document.getElementById('pane')
-			let zone = document.getElementById('zone')
-			pane.style.height = zone.clientHeight - e.clientY + 180 + 'px'
+			if (this.isResizing) {
+				let pane = document.getElementById('pane')
+				let zone = document.getElementById('zone')
+				pane.style.height = zone.clientHeight - e.clientY + 180 + 'px'
+			}
+		},
+		upmouse () {
+			this.isResizing = false
 		}
 	}
 }
