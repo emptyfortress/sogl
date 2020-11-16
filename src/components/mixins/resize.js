@@ -7,7 +7,7 @@ export const resize = {
 	},
 	mounted () {
 		window.addEventListener('mousemove', this.drag)
-		window.addEventListener('mouseup', this.mouseup)
+		window.addEventListener('mouseup', this.upmouse)
 	},
 	beforeDestroy () {
 		window.removeEventListener('mousemove', this.drag)
@@ -17,15 +17,13 @@ export const resize = {
 		setResize (e) {
 			this.isResizing = true
 			this.lastDownY = e.clientY
-		},
-		removeResize () {
-			this.isResizing = false
+			console.log('set')
 		},
 		drag (e) {
 			if (this.isResizing) {
 				let pane = document.getElementById('pane')
 				let zone = document.getElementById('zone')
-				pane.style.height = zone.clientHeight - e.clientY + 180 + 'px'
+				pane.style.height = zone.clientHeight - e.clientY + 210 + 'px'
 			}
 		},
 		upmouse () {

@@ -1,6 +1,7 @@
 <template lang="pug">
 .all
 	.zag Ход согласования
+	.pa-4.white
 	#zone
 		.mynet
 			network(ref="network"
@@ -13,24 +14,24 @@
 				@deselect-node="onDeselect"
 			)
 		#pane
-			.handle(@mousedown="setResize" @mouseup="removeResize")
+			.handle(@mousedown="setResize")
 			p(id="paneInfo")
 				v-icon(color="dark").mr-3 mdi-information
 				span Выберите этап для просмотра информации по нему.
-			v-slide-x-transition(mode="out-in")
-				Table(v-show="selectedNode" :selected="selectedNode")
-			v-slide-x-transition(mode="out-in")
-				.but(v-show="selectedNode")
-					v-btn(icon @click="select(selectedNode - 1)")
-						v-icon mdi-chevron-left-circle-outline
-					v-btn(icon @click="select(selectedNode + 1)")
-						v-icon mdi-chevron-right-circle-outline
+			//- v-slide-x-transition(mode="out-in")
+				//- Table(v-show="selectedNode" :node="etap")
+			//- v-slide-x-transition(mode="out-in")
+			//- 	.but(v-show="selectedNode")
+			//- 		v-btn(icon @click="select(selectedNode - 1)")
+			//- 			v-icon mdi-chevron-left-circle-outline
+			//- 		v-btn(icon @click="select(selectedNode + 1)")
+			//- 			v-icon mdi-chevron-right-circle-outline
 
 </template>
 
 <script>
 import { Network } from "vue-vis-network";
-import { list, branches } from '@/list.js'
+import { list, branches, table } from '@/list.js'
 import { options } from '@/options.js'
 import {resize} from '@/components/mixins/resize'
 import Table from '@/components/Table'
@@ -40,6 +41,7 @@ export default {
 	mixins: [resize],
 	data() {
 		return {
+			table,
 			nodes: list,
 			edges: branches,
 			options: options,
@@ -50,6 +52,11 @@ export default {
 	components: {
 		Network,
 		Table,
+	},
+	computed: {
+		etap () {
+			return table[0]
+		}
 	},
 	methods: {
 		onNodeSelected: function (e) {
@@ -106,7 +113,7 @@ export default {
 	position: absolute;
 	width: 100%;
 	height: 50px;
-	max-height: 100%;
+	/* max-height: 100%; */
 	bottom: 0;
 	left: 0;
 	background: #fff;

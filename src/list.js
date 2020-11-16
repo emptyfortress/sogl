@@ -43,6 +43,14 @@ const branches = [
 ]
 
 const table = [
+	{ id: 9,
+		names: [
+			{ fio: 'Орлов П.С.', decision: 'Согласовано', date: '13.10.2020', comment: '' },
+			{ fio: 'Орлов П.С.', decision: 'Согласовано', date: '13.10.2020', comment: '' },
+			{ fio: 'Орлов П.С.', decision: 'Согласовано', date: '13.10.2020', comment: '' },
+			{ fio: 'Орлов П.С.', decision: 'Согласовано', date: '13.10.2020', comment: '' },
+		],
+	}
 	
 ]
 
