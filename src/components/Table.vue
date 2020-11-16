@@ -7,8 +7,12 @@
 		.status
 			img(src="@/assets/img/run.png")
 		.st В работе
-		<!-- v-icon(small).ml-10 mdi-timer-sand-empty -->
-		<!-- .overline В работе -->
+	table.full
+		thead
+			th one
+			th one
+			th one
+			th one
 </template>
 
 <script>
