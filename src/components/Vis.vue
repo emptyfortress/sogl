@@ -7,12 +7,13 @@
 				:nodes="nodes"
 				:edges="edges"
 				:options="options"
-				:events="['selectNode']"
+				:events="['selectNode', 'deselectNode']"
 				@select-node="onNodeSelected"
+				@deselect-node="onDeselect"
 			).wrapper
 		drag-handle.handle
-		drag-content.c2
-			p
+		drag-content(id="pane").c2
+			p(id="paneInfo")
 				v-icon(color="dark").mr-3 mdi-information
 				span Выберите этап для просмотра информации по нему.
 </template>
@@ -40,6 +41,16 @@ export default {
 	},
 	methods: {
 		onNodeSelected: function (e) {
+			let selectedNode = e.nodes;
+			console.log(selectedNode);
+			document.querySelector('#paneInfo').classList.add('hide');
+			var pane = document.querySelector('#pane')
+			pane.classList.add('move')
+			// document.querySelector('#selectEtap').innerHTML = etapInfo(selectedNode);
+			// network.focus(selectedNode, {offset: {x: 0, y: -200}, animation: true});
+			console.log(e)
+		},
+		onDeselect: function (e) {
 			console.log(e.nodes)
 		},
 	},
@@ -72,6 +83,15 @@ export default {
 	height: 80px;
 	box-shadow: 0 -1px 6px rgba(0,0,0,.2);
 	padding: 1rem;
+	position: relative;
+	left: 0;
+	width: 100%;
+	bottom: 0;
+	transition: .2s ease all;
+	&.move {
+		position: absolute;
+		height: 300px;
+	}
 }
 .handle {
 	position: relative;
@@ -79,6 +99,7 @@ export default {
 	height: 10px;
 	cursor: ns-resize;
 	background: transparent url('../assets/img/drag.png') no-repeat 50% 50%;
+	z-index: 5;
 	&:hover:after {
 		content: '';
 		position: absolute;
@@ -87,5 +108,8 @@ export default {
 		bottom: 0;
 		border-top: 2px dotted $dark;
 	}
+}
+.hide {
+	display: none;
 }
 </style>

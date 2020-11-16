@@ -1,4 +1,5 @@
 const options = {
+	autoResize: true,
 	interaction: {
 		hover: false,
 	},
@@ -8,7 +9,6 @@ const options = {
 			enabled: true,
 			direction: 'LR',
 			sortMethod: 'directed',
-
 		}
 	},
 	nodes: {
@@ -25,7 +25,7 @@ const options = {
 	edges: {
 		smooth: true,
 		arrows: {to: true},
-		width: 2,
+		width: 1,
 		shadow: false,
 		hoverWidth: 1.5,
 		arrowStrikethrough: true,
@@ -45,8 +45,37 @@ const options = {
 		},
 		current: {
 			shape: 'circularImage',
-			image: 'run.png'
-		}
+			image: 'run.png',
+			color: {
+				background: '#008AD1',
+			},
+		},
+		date: {
+			shape: 'image',
+			image: 'tick.png',
+			size: 3,
+		},
+		finished: {
+			shape: 'circularImage',
+			image: 'check.png',
+			color: 'green',
+		},
+		overdue: {
+			shape: 'circularImage',
+			image: 'check.png',
+			borderWidth: 2,
+			color: {
+				background: '#FEC01D',
+				border: 'green',
+			},
+		},
+		notStart: {
+			shape: 'circularImage',
+			image: 'stand.png',
+			color: {
+				background: 'grey',
+			},
+		},
 	}
 }
 
