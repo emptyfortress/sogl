@@ -1,7 +1,6 @@
 <template lang="pug">
 .all
 	.zag Ход согласования
-	.pa-4.white
 	#zone
 		.mynet
 			network(ref="network"
@@ -9,23 +8,25 @@
 				:nodes="nodes"
 				:edges="edges"
 				:options="options"
-				:events="['selectNode', 'deselectNode']"
+				:events="['selectNode', 'deselectNode', 'beforeDrawing', 'afterDrawing']"
 				@select-node="onNodeSelected"
 				@deselect-node="onDeselect"
+				@before-drawing.once="beforeD"
+				@after-drawing.once="afterD"
 			)
 		#pane
 			.handle(@mousedown="setResize")
 			p(id="paneInfo")
 				v-icon(color="dark").mr-3 mdi-information
 				span Выберите этап для просмотра информации по нему.
-			//- v-slide-x-transition(mode="out-in")
-				//- Table(v-show="selectedNode" :node="etap")
-			//- v-slide-x-transition(mode="out-in")
-			//- 	.but(v-show="selectedNode")
-			//- 		v-btn(icon @click="select(selectedNode - 1)")
-			//- 			v-icon mdi-chevron-left-circle-outline
-			//- 		v-btn(icon @click="select(selectedNode + 1)")
-			//- 			v-icon mdi-chevron-right-circle-outline
+			v-slide-x-transition(mode="out-in")
+				Table(v-if="selectedNode" :node="table[selectedNode - 9]")
+			v-slide-x-transition(mode="out-in")
+				.but(v-show="selectedNode")
+					v-btn(icon @click="select(selectedNode - 1)")
+						v-icon mdi-chevron-left-circle-outline
+					v-btn(icon @click="select(selectedNode + 1)")
+						v-icon mdi-chevron-right-circle-outline
 
 </template>
 
@@ -55,10 +56,18 @@ export default {
 	},
 	computed: {
 		etap () {
-			return table[0]
+			return table[this.selectedNode - 9]
 		}
 	},
 	methods: {
+		beforeD () {
+			let network = this.$refs.network
+			network.focus(14, {scale: 3})
+		},
+		afterD () {
+			let network = this.$refs.network
+			network.fit({animation: {duration: 800,},})
+		},
 		onNodeSelected: function (e) {
 			let selectedNode = e.nodes[0];
 			let network = this.$refs.network
@@ -74,7 +83,8 @@ export default {
 			}
 			network.focus(selectedNode, {scale: 1.3, offset: {x: 0, y: -100}, animation: true})
 			this.selectedNode = selectedNode
-			console.log(this.selectedNode)
+			console.log('selected ' + this.selectedNode)
+			console.log(this.table[selectedNode - 9])
 		},
 		onDeselect: function (e) {
 			console.log('deselect' + e.nodes)

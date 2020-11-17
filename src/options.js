@@ -1,8 +1,8 @@
 const options = {
-	// autoResize: true,
-	// interaction: {
-	// 	hover: false,
-	// },
+	autoResize: true,
+	interaction: {
+		hover: false,
+	},
 	layout: {
 		improvedLayout: true,
 		hierarchical: {

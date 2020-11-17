@@ -1,19 +1,19 @@
 <template lang="pug">
 .all
 	.etap
-		.overline.mr-4 Этап 2
-		.txt Согласование с производством
-		.overline.ml-7 13 ноября &mdash; 14 ноября
+		.overline.mr-4 {{ node.etap }}
+		.txt(@click="test(node)") {{ node.title }}
+		.overline.ml-7 {{ node.dates }}
 		.status
 			img(src="@/assets/img/run.png")
-		.st В работе
+		.st {{ node.status }}
 	table.full.mt-3
 		thead
 			th(v-for="header in headers") {{ header.title }}
 		tbody
 			tr(v-for="name in node.names").ro
 				td {{ name.fio }}
-				td {{ name.decision }}
+				td(:class="color(name)") {{ name.decision }}
 				td {{ name.date }}
 				td {{ name.comment }}
 </template>
@@ -21,7 +21,7 @@
 <script>
 
 export default {
-	props: ['selected', 'node'],
+	props: ['node'],
 	data() {
 		return {
 			headers: [
@@ -32,9 +32,27 @@ export default {
 			]
 		}
 	},
-	created () {
-		console.log(this.node)
+	computed: {
+		etap () {
+			return this.table[this.node - 9].names
+		}
 	},
+	mounted () {
+		console.log('lkajslkj ' + this.node)
+	},
+	methods: {
+		color (e) {
+			switch (e.decision) {
+			case 'Согласовано':
+				return 'sogl'
+			case 'Отказано':
+				return 'reject'
+			case 'В работе':
+				return 'work'
+			default: return ''
+			}
+		}
+	}
 }
 
 </script>
@@ -71,6 +89,7 @@ export default {
 	width: 100%;
 	background: #eee;
 	transition: all 0.3s ease;
+	font-size: .9rem;
 	tr {
 		background: #fff;
 	}
@@ -91,10 +110,17 @@ export default {
 			background: #eee;
 		}
 		td {
-			/* border-bottom: 1px solid #eee; */
 			padding: 6px 1rem;
-			/* position: relative; */
 		}
 	}
+}
+.sogl {
+	background: #b7e4a1;
+}
+.reject {
+	background: pink;
+}
+.work {
+	background: #bddaf5;
 }
 </style>

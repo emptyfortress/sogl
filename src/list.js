@@ -43,14 +43,38 @@ const branches = [
 ]
 
 const table = [
-	{ id: 9,
+	{ id: 9, title: 'Согласование с производством', etap: 'Этап 2', dates: '13 ноября - 14 ноября', status: 'Завершено',
 		names: [
-			{ fio: 'Орлов П.С.', decision: 'Согласовано', date: '13.10.2020', comment: '' },
-			{ fio: 'Орлов П.С.', decision: 'Согласовано', date: '13.10.2020', comment: '' },
-			{ fio: 'Орлов П.С.', decision: 'Согласовано', date: '13.10.2020', comment: '' },
-			{ fio: 'Орлов П.С.', decision: 'Согласовано', date: '13.10.2020', comment: '' },
+			{ fio: 'Орлов П.С.', decision: 'Согласовано', color: 'sogl', date: '13.10.2020', comment: '' },
+			{ fio: 'Журавлева И.П.', decision: 'Отказано', date: '13.10.2020', comment: '' },
+			{ fio: 'Галкин К.К.', decision: 'В работе', date: '13.10.2020', comment: '' },
+			{ fio: 'Гусев А.В.', decision: 'Согласовано', date: '13.10.2020', comment: '' },
 		],
-	}
+	},
+	{ id: 10, title: 'Юридический отдел', etap: 'Этап 3', dates: '14 ноября - 15 ноября', status: 'Завершено',
+		names: [
+			{ fio: 'Орлов П.С.', decision: 'Отказано', color: 'sogl', date: '13.10.2020', comment: '' },
+			{ fio: 'Журавлева И.П.', decision: 'Отказано', date: '13.10.2020', comment: '' },
+			{ fio: 'Галкин К.К.', decision: 'Отказано', date: '13.10.2020', comment: '' },
+			{ fio: 'Гусев А.В.', decision: 'Отказано', date: '13.10.2020', comment: '' },
+		],
+	},
+	{ id: 11, title: 'Финансовый отдел', etap: 'Этап 4', dates: '14 ноября - 15 ноября', status: 'Завершено',
+		names: [
+			{ fio: 'Орлов П.С.', decision: 'Согласовано', color: 'sogl', date: '13.10.2020', comment: '' },
+			{ fio: 'Журавлева И.П.', decision: 'Отказано', date: '13.10.2020', comment: '' },
+			{ fio: 'Галкин К.К.', decision: 'В работе', date: '13.10.2020', comment: '' },
+			{ fio: 'Гусев А.В.', decision: 'Согласовано', date: '13.10.2020', comment: '' },
+		],
+	},
+	{ id: 12, title: 'Плановый отдел', etap: 'Этап 5', dates: '14 ноября - 15 ноября', status: 'Завершено',
+		names: [
+			{ fio: 'Орлов П.С.', decision: 'Согласовано', color: 'sogl', date: '13.10.2020', comment: '' },
+			{ fio: 'Журавлева И.П.', decision: 'Отказано', date: '13.10.2020', comment: '' },
+			{ fio: 'Галкин К.К.', decision: 'В работе', date: '13.10.2020', comment: '' },
+			{ fio: 'Гусев А.В.', decision: 'Согласовано', date: '13.10.2020', comment: '' },
+		],
+	},
 	
 ]
 
