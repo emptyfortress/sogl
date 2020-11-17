@@ -53,10 +53,8 @@ const table = [
 	},
 	{ id: 10, title: 'Юридический отдел', etap: 'Этап 3', dates: '14 ноября - 15 ноября', status: 'Завершено',
 		names: [
-			{ fio: 'Орлов П.С.', decision: 'Отказано', color: 'sogl', date: '13.10.2020', comment: '' },
-			{ fio: 'Журавлева И.П.', decision: 'Отказано', date: '13.10.2020', comment: '' },
-			{ fio: 'Галкин К.К.', decision: 'Отказано', date: '13.10.2020', comment: '' },
-			{ fio: 'Гусев А.В.', decision: 'Отказано', date: '13.10.2020', comment: '' },
+			{ fio: 'Воробьев П.П', decision: 'Согласовано с замечаниями', color: 'sogl', date: '13.10.2020', comment: '' },
+			{ fio: 'Скворцов Ш.А.', decision: 'Отказано', date: '13.10.2020', comment: '' },
 		],
 	},
 	{ id: 11, title: 'Финансовый отдел', etap: 'Этап 4', dates: '14 ноября - 15 ноября', status: 'Завершено',

@@ -37,14 +37,13 @@ export default {
 			return this.table[this.node - 9].names
 		}
 	},
-	mounted () {
-		console.log('lkajslkj ' + this.node)
-	},
 	methods: {
 		color (e) {
 			switch (e.decision) {
 			case 'Согласовано':
 				return 'sogl'
+			case 'Согласовано c замечаниями':
+				return 'soglas'
 			case 'Отказано':
 				return 'reject'
 			case 'В работе':
@@ -116,6 +115,9 @@ export default {
 }
 .sogl {
 	background: #b7e4a1;
+}
+.soglas {
+	background: #FEC01D;
 }
 .reject {
 	background: pink;

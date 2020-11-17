@@ -42,7 +42,14 @@ const options = {
 	groups: {
 		flag: {
 			shape: 'circularImage',
-			image: 'flag.png'
+			image: 'flag.png',
+		},
+		finish: {
+			shape: 'circularImage',
+			image: 'finish.png',
+			color: {
+				background: '#fff',
+			},
 		},
 		current: {
 			shape: 'circularImage',
@@ -66,8 +73,8 @@ const options = {
 			image: 'check.png',
 			borderWidth: 2,
 			color: {
-				background: '#FEC01D',
-				border: 'green',
+				background: 'green',
+				border: 'red',
 			},
 		},
 		notStart: {
