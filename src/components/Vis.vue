@@ -7,7 +7,7 @@
 				id="network"
 				:nodes="nodes"
 				:edges="edges"
-				:options="options"
+				:options="te"
 				:events="['selectNode', 'deselectNode', 'beforeDrawing', 'afterDrawing']"
 				@select-node="onNodeSelected"
 				@deselect-node="onDeselect"
@@ -45,6 +45,7 @@ export default {
 			table,
 			nodes: list,
 			edges: branches,
+			te: {},
 			options: options,
 			firstSel: true,
 			selectedNode: null,
