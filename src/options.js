@@ -3,14 +3,14 @@ const options = {
 	interaction: {
 		hover: false,
 	},
-	layout: {
-		improvedLayout: true,
-		hierarchical: {
-			enabled: true,
-			direction: 'LR',
-			sortMethod: 'directed',
-		}
-	},
+	// layout: {
+	// 	improvedLayout: true,
+	// 	hierarchical: {
+	// 		enabled: true,
+	// 		direction: 'LR',
+	// 		sortMethod: 'directed',
+	// 	}
+	// },
 	nodes: {
 		shape: 'box',
 		borderWidth: 0,
@@ -23,22 +23,22 @@ const options = {
 			},
 		},
 	},
-	edges: {
-		smooth: true,
-		arrows: {to: true},
-		width: 1,
-		shadow: false,
-		hoverWidth: 1.5,
-		arrowStrikethrough: true,
-		color: {
-			color: '#aaa',
-			highlight: '#2B7CE9',
-		},
-		font: {
-			vadjust: 20,
-		},
-		chosen: true,
-	},
+	// edges: {
+	// 	smooth: true,
+	// 	arrows: {to: true},
+	// 	width: 1,
+	// 	shadow: false,
+	// 	hoverWidth: 1.5,
+	// 	arrowStrikethrough: true,
+	// 	color: {
+	// 		color: '#aaa',
+	// 		highlight: '#2B7CE9',
+	// 	},
+	// 	font: {
+	// 		vadjust: 20,
+	// 	},
+	// 	chosen: true,
+	// },
 	groups: {
 		flag: {
 			shape: 'circularImage',

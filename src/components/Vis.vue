@@ -37,18 +37,44 @@ import { options } from '@/options.js'
 import {resize} from '@/components/mixins/resize'
 import Table from '@/components/Table'
 
-
 export default {
 	mixins: [resize],
 	data() {
 		return {
 			table,
+			options: options,
 			nodes: list,
 			edges: branches,
-			options: options,
 			firstSel: true,
 			selectedNode: null,
 		}
+	},
+	mounted () {
+		this.$refs.network.setOptions({
+			layout: {
+				hierarchical: {
+					enabled: true,
+					direction: 'LR',
+					sortMethod: 'directed',
+				}
+			},
+			edges: {
+				smooth: true,
+				arrows: {to: true},
+				width: 1,
+				shadow: false,
+				hoverWidth: 1.5,
+				arrowStrikethrough: true,
+				color: {
+					color: '#aaa',
+					highlight: '#2B7CE9',
+				},
+				font: {
+					vadjust: 20,
+				},
+				chosen: true,
+			},
+		})
 	},
 	components: {
 		Network,
