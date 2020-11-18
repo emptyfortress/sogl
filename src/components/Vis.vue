@@ -26,7 +26,7 @@
 						img(src="@/assets/img/user0.svg")
 					.overline.mr-4 Инициатор: Иванов П.С.
 			div(v-if="selectedNode === 8")
-				h3 Здесь информация по теме согласования
+				p.text-center Здесь информация по теме согласования
 			div(v-if="selectedNode === 17")
 				h3 Финиш
 				v-btn(color="primary" depressed ).mt-5 Печать листа согласования
@@ -122,7 +122,6 @@ export default {
 			}
 			network.focus(selectedNode, {scale: 1.3, offset: {x: 0, y: -100}, animation: true})
 			this.selectedNode = selectedNode
-			console.log(this.selectedNode)
 		},
 		onDeselect: function (e) {
 			if (e.nodes.length === 0) {

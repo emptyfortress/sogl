@@ -1,7 +1,9 @@
 <template lang="pug">
 .home
-	.zag home
-	p(v-for="n in 30") Lorem ipsum dolor sit amet, consectetuer adipiscing elit.  Donec hendrerit tempor tellus.  Donec pretium posuere tellus.  Proin quam nisl, tincidunt et, mattis eget, convallis nec, purus.  Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.  Nulla posuere.  Donec vitae dolor.  Nullam tristique diam non turpis.  Cras placerat accumsan nulla.  Nullam rutrum.  Nam vestibulum accumsan nisl.
+	.zag Read me
+	br
+	div Прототип для проверки виджета Ход согласования.
+	|Выберите Согласования в панели слева
 
 </template>
 
