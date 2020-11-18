@@ -142,14 +142,13 @@ export default {
 .mynet {
 	height: 100%;
 	> div {
-		height: calc(100% - 90px);
+		height: calc(100% - 50px);
 	}
 }
 #pane {
 	position: absolute;
 	width: 100%;
 	height: 50px;
-	/* max-height: 100%; */
 	bottom: 0;
 	left: 0;
 	background: #fff;

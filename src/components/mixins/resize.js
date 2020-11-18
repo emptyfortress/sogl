@@ -23,7 +23,7 @@ export const resize = {
 			if (this.isResizing) {
 				let pane = document.getElementById('pane')
 				let zone = document.getElementById('zone')
-				pane.style.height = zone.clientHeight - e.clientY + 210 + 'px'
+				pane.style.height = zone.clientHeight - e.clientY + 180 + 'px'
 			}
 		},
 		upmouse () {
