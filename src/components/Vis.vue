@@ -20,7 +20,20 @@
 				v-icon(color="dark").mr-3 mdi-information
 				span Выберите этап для просмотра информации по нему.
 			v-slide-x-transition(mode="out-in")
-				Table(v-if="selectedNode" :node="table[selectedNode - 9]")
+				.start(v-if="selectedNode === 8")
+					.txt Старт
+					v-avatar
+						img(src="@/assets/img/user0.svg")
+					.overline.mr-4 Инициатор: Иванов П.С.
+			div(v-if="selectedNode === 8")
+				h3 Здесь информация по теме согласования
+			div(v-if="selectedNode === 17")
+				h3 Финиш
+				v-btn(color="primary" depressed ).mt-5 Печать листа согласования
+				
+					
+			v-slide-x-transition(mode="out-in")
+				Table(v-if="selectedNode >= 9 && selectedNode < 17" :node="table[selectedNode - 8]")
 			v-slide-x-transition(mode="out-in")
 				.but(v-show="selectedNode")
 					v-btn(icon @click="select(selectedNode - 1)")
@@ -109,11 +122,12 @@ export default {
 			}
 			network.focus(selectedNode, {scale: 1.3, offset: {x: 0, y: -100}, animation: true})
 			this.selectedNode = selectedNode
-			console.log('selected ' + this.selectedNode)
-			console.log(this.table[selectedNode - 9])
+			console.log(this.selectedNode)
 		},
 		onDeselect: function (e) {
-			console.log('deselect' + e.nodes)
+			if (e.nodes.length === 0) {
+				this.selectedNode = null
+			}
 		},
 		select (e) {
 			let sel = [] 
@@ -181,5 +195,29 @@ export default {
 	position: absolute;
 	top: .5rem;
 	right: .5rem;
+}
+.start {
+	display: flex;
+	align-items: center;
+	font-size: 1.2rem;
+	.overline {
+		font-weight: 400;
+	}
+	.status {
+		width: 28px;
+		height: 28px;
+		background: #ccc;
+		border-radius: 50%;
+		font-size: .9rem;
+		display: flex;
+		margin-left: 30px;
+		img {
+			width: 27px;
+		}
+	}
+	.st {
+		font-size: .8rem;
+		margin-left: 5px;
+	}
 }
 </style>

@@ -43,37 +43,65 @@ const branches = [
 ]
 
 const table = [
-	{ id: 9, title: 'Согласование с производством', etap: 'Этап 2', dates: '13 ноября - 14 ноября', status: 'Завершено',
+	{ id: 9, title: 'Старт', etap: 'Этап 2', dates: '13 ноября - 14 ноября', status: 'Завершено', color: 'green', icon: 'check',
+	},
+	{ id: 10, title: 'Согласование с производством', etap: 'Этап 2', dates: '13 ноября - 14 ноября', status: 'Завершено', color: 'green', icon: 'check',
 		names: [
 			{ fio: 'Орлов П.С.', decision: 'Согласовано', color: 'sogl', date: '13.10.2020', comment: '' },
-			{ fio: 'Журавлева И.П.', decision: 'Отказано', date: '13.10.2020', comment: '' },
-			{ fio: 'Галкин К.К.', decision: 'В работе', date: '13.10.2020', comment: '' },
-			{ fio: 'Гусев А.В.', decision: 'Согласовано', date: '13.10.2020', comment: '' },
+			{ fio: 'Журавлева И.П.', decision: 'Согласовано', color: 'sogl', date: '13.10.2020', comment: '' },
+			{ fio: 'Галкин К.К.', decision: 'Согласовано', color: 'sogl', date: '13.10.2020', comment: '' },
+			{ fio: 'Гусев А.В.', decision: 'Согласовано', color: 'sogl', date: '13.10.2020', comment: '' },
 		],
 	},
-	{ id: 10, title: 'Юридический отдел', etap: 'Этап 3', dates: '14 ноября - 15 ноября', status: 'Завершено',
+	{ id: 11, title: 'Юридический отдел', etap: 'Этап 3', dates: '14 ноября - 15 ноября', status: 'Завершено', color: 'green', icon: 'check',
 		names: [
-			{ fio: 'Воробьев П.П', decision: 'Согласовано с замечаниями', color: 'sogl', date: '13.10.2020', comment: '' },
-			{ fio: 'Скворцов Ш.А.', decision: 'Отказано', date: '13.10.2020', comment: '' },
+			{ fio: 'Воробьев П.П', decision: 'Согласовано с замечаниями', color: 'soglas', date: '13.10.2020', comment: 'Доработать формулировку по аренде' },
+			{ fio: 'Скворцов Ш.А.', decision: 'Согласовано', color: 'sogl', date: '13.10.2020', comment: '' },
 		],
 	},
-	{ id: 11, title: 'Финансовый отдел', etap: 'Этап 4', dates: '14 ноября - 15 ноября', status: 'Завершено',
-		names: [
-			{ fio: 'Орлов П.С.', decision: 'Согласовано', color: 'sogl', date: '13.10.2020', comment: '' },
-			{ fio: 'Журавлева И.П.', decision: 'Отказано', date: '13.10.2020', comment: '' },
-			{ fio: 'Галкин К.К.', decision: 'В работе', date: '13.10.2020', comment: '' },
-			{ fio: 'Гусев А.В.', decision: 'Согласовано', date: '13.10.2020', comment: '' },
-		],
-	},
-	{ id: 12, title: 'Плановый отдел', etap: 'Этап 5', dates: '14 ноября - 15 ноября', status: 'Завершено',
+	{ id: 12, title: 'Финансовый отдел', etap: 'Этап 4', dates: '14 ноября - 15 ноября', status: 'Завершено', color: 'green', icon: 'check',
 		names: [
 			{ fio: 'Орлов П.С.', decision: 'Согласовано', color: 'sogl', date: '13.10.2020', comment: '' },
-			{ fio: 'Журавлева И.П.', decision: 'Отказано', date: '13.10.2020', comment: '' },
-			{ fio: 'Галкин К.К.', decision: 'В работе', date: '13.10.2020', comment: '' },
-			{ fio: 'Гусев А.В.', decision: 'Согласовано', date: '13.10.2020', comment: '' },
+			{ fio: 'Журавлева И.П.', decision: 'Отказано', color: 'reject', date: '13.10.2020', comment: '' },
+			{ fio: 'Галкин К.К.', decision: 'В работе', color: 'work', date: '13.10.2020', comment: '' },
+			{ fio: 'Гусев А.В.', decision: 'Согласовано', color: 'sogl', date: '13.10.2020', comment: '' },
 		],
 	},
-	
+	{ id: 13, title: 'Плановый отдел', etap: 'Этап 5', dates: '14 ноября - 15 ноября', status: 'Завершено', color: 'green', icon: 'check',
+		names: [
+			{ fio: 'Севостьянов А.В.', decision: 'Согласовано', color: 'sogl', date: '13.10.2020', comment: '' },
+			{ fio: 'Никитон П.П.', decision: 'Отказано', color: 'reject', date: '13.10.2020', comment: '' },
+		],
+	},
+	{ id: 14, title: 'Консолидация', etap: 'Этап 6', dates: '15 ноября - 16 ноября', status: 'Завершено с просрочкой', color: 'amber', icon: 'check',
+		names: [
+			{ fio: 'Орлов П.С.', decision: 'Согласовано', color: 'sogl', date: '13.10.2020', comment: '' },
+			{ fio: 'Журавлева И.П.', decision: 'Отказано', color: 'reject', date: '13.10.2020', comment: '' },
+			{ fio: 'Галкин К.К.', decision: 'В работе', color: 'work', date: '13.10.2020', comment: '' },
+			{ fio: 'Гусев А.В.', decision: 'Согласовано', color: 'sogl', date: '13.10.2020', comment: '' },
+		],
+	},
+	{ id: 15, title: 'Согласование с акционерами', etap: 'Этап 7', dates: '17 ноября - 18 ноября', status: 'В работе', color: '#008AD1', icon: 'run',
+		names: [
+			{ fio: 'Bill Gates', decision: 'Согласовано', color: 'sogl', date: '17.10.2020', comment: '' },
+			{ fio: 'Elon Mask', decision: 'В рабoте', color: 'work', date: '', comment: '' },
+			{ fio: 'Jeff Bezos', decision: 'В работе', color: 'work', date: '', comment: '' },
+			{ fio: 'John Rockfeller', decision: 'Согласовано', color: 'sogl', date: '17.10.2020', comment: '' },
+		],
+	},
+	{ id: 16, title: 'Подписание', etap: 'Этап 8', dates: '19 ноября - 19 ноября', status: 'Не начато', color: 'grey', icon: 'stand',
+		names: [
+			{ fio: 'Соловьев П.К.', decision: 'Не начато', },
+			{ fio: 'Жаворонкова И.С.', decision: 'Не начато', },
+			{ fio: 'Уткин Г.А.', decision: 'Не начато', },
+		],
+	},
+	{ id: 17, title: 'Регистрация в реестре', etap: 'Этап 9', dates: '20 ноября', status: 'Не начато', color: 'grey', icon: 'stand',
+		names: [
+			{ fio: 'Пичугина М.Н.', decision: 'Не начато', },
+		],
+	},
+	{ id: 18, }
 ]
 
 export { list, branches, table }

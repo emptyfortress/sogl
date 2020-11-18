@@ -4,8 +4,8 @@
 		.overline.mr-4 {{ node.etap }}
 		.txt(@click="test(node)") {{ node.title }}
 		.overline.ml-7 {{ node.dates }}
-		.status
-			img(src="@/assets/img/run.png")
+		v-avatar(:color="`${node.color}`" size="24").ml-10
+			img(:src="require(`@/assets/img/${node.icon}.png`)")
 		.st {{ node.status }}
 	table.full.mt-3
 		thead
@@ -13,7 +13,7 @@
 		tbody
 			tr(v-for="name in node.names").ro
 				td {{ name.fio }}
-				td(:class="color(name)") {{ name.decision }}
+				td(:class="`${name.color}`") {{ name.decision }}
 				td {{ name.date }}
 				td {{ name.comment }}
 </template>
@@ -38,19 +38,6 @@ export default {
 		}
 	},
 	methods: {
-		color (e) {
-			switch (e.decision) {
-			case 'Согласовано':
-				return 'sogl'
-			case 'Согласовано c замечаниями':
-				return 'soglas'
-			case 'Отказано':
-				return 'reject'
-			case 'В работе':
-				return 'work'
-			default: return ''
-			}
-		}
 	}
 }
 
