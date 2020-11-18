@@ -7,6 +7,11 @@ scss
 pug
 vuex
 drawer
+vis
+
+Ход согласования в виде сетки vis
+
+
 
 ## Project setup
 ```
